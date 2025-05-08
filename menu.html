@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Eats Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .menu-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .menu-header {
+            background: #e74c3c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .menu-tabs {
+            display: flex;
+            background: #333;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn:hover {
+            background: #e74c3c;
+        }
+        
+        .tab-btn.active {
+            background: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        .tab-content.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .menu-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .item-details {
+            padding: 15px;
+        }
+        
+        .item-name {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .item-price {
+            font-size: 18px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .item-desc {
+            color: #666;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .order-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .order-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-header">
+            <h1>Delicious Eats Menu</h1>
+            <p>Explore our mouth-watering selections</p>
+        </div>
+        
+        <div class="menu-tabs">
+            <button class="tab-btn active" onclick="openTab('burgers')">Burgers</button>
+            <button class="tab-btn" onclick="openTab('pizzas')">Pizzas</button>
+            <button class="tab-btn" onclick="openTab('drinks')">Drinks</button>
+            <button class="tab-btn" onclick="openTab('wraps')">Wraps</button>
+        </div>
+        
+        <!-- Burgers Tab -->
+        <div id="burgers" class="tab-content active">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="Classic Burger" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Classic Burger</h3>
+                    <p class="item-desc">Juicy beef patty with lettuce, tomato, and special sauce</p>
+                    <p class="item-price">$8.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b" alt="Cheeseburger" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Cheeseburger</h3>
+                    <p class="item-desc">Classic burger with melted American cheese</p>
+                    <p class="item-price">$9.49</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1603064752734-4c48eff53d05" alt="Bacon Burger" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Bacon Burger</h3>
+                    <p class="item-desc">Loaded with crispy bacon strips and cheddar</p>
+                    <p class="item-price">$10.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add" alt="Veggie Burger" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Veggie Burger</h3>
+                    <p class="item-desc">Plant-based patty with avocado and sprouts</p>
+                    <p class="item-price">$9.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90" alt="Double Burger" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Double Burger</h3>
+                    <p class="item-desc">Two beef patties with double cheese</p>
+                    <p class="item-price">$12.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pizzas Tab -->
+        <div id="pizzas" class="tab-content">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Margherita Pizza" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Margherita</h3>
+                    <p class="item-desc">Classic tomato sauce, mozzarella, and basil</p>
+                    <p class="item-price">$12.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591" alt="Pepperoni Pizza" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Pepperoni</h3>
+                    <p class="item-desc">Loaded with spicy pepperoni slices</p>
+                    <p class="item-price">$14.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94" alt="BBQ Chicken Pizza" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">BBQ Chicken</h3>
+                    <p class="item-desc">Tangy BBQ sauce with grilled chicken</p>
+                    <p class="item-price">$15.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1601924582970-9238bcb495d9" alt="Veggie Pizza" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Veggie Delight</h3>
+                    <p class="item-desc">Bell peppers, mushrooms, onions, and olives</p>
+                    <p class="item-price">$13.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1620374645498-af6bd681a0bd" alt="Hawaiian Pizza" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Hawaiian</h3>
+                    <p class="item-desc">Ham and pineapple on tomato sauce</p>
+                    <p class="item-price">$14.49</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Drinks Tab -->
+        <div id="drinks" class="tab-content">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031" alt="Cola" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Cola</h3>
+                    <p class="item-desc">Classic carbonated soft drink</p>
+                    <p class="item-price">$2.49</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137" alt="Lemonade" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Lemonade</h3>
+                    <p class="item-desc">Freshly squeezed lemons with mint</p>
+                    <p class="item-price">$3.29</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7" alt="Iced Tea" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Iced Tea</h3>
+                    <p class="item-desc">Brewed black tea with lemon</p>
+                    <p class="item-price">$2.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1433162653888-a571db5ccccf" alt="Milkshake" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Chocolate Milkshake</h3>
+                    <p class="item-desc">Creamy chocolate goodness</p>
+                    <p class="item-price">$4.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd" alt="Orange Juice" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Orange Juice</h3>
+                    <p class="item-desc">Freshly squeezed Florida oranges</p>
+                    <p class="item-price">$3.49</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wraps Tab -->
+        <div id="wraps" class="tab-content">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1630450202870-3e06b7c329c8" alt="Chicken Wrap" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Chicken Caesar Wrap</h3>
+                    <p class="item-desc">Grilled chicken with romaine and parmesan</p>
+                    <p class="item-price">$8.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Veggie Wrap" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Veggie Hummus Wrap</h3>
+                    <p class="item-desc">Fresh veggies with garlic hummus</p>
+                    <p class="item-price">$7.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Beef Wrap" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Spicy Beef Wrap</h3>
+                    <p class="item-desc">Seasoned beef with jalapeños and cheese</p>
+                    <p class="item-price">$9.49</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae" alt="Falafel Wrap" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Falafel Wrap</h3>
+                    <p class="item-desc">Crispy falafel with tahini sauce</p>
+                    <p class="item-price">$8.49</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a" alt="Buffalo Wrap" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Buffalo Chicken Wrap</h3>
+                    <p class="item-desc">Spicy buffalo sauce with blue cheese</p>
+                    <p class="item-price">$9.99</p>
+                    <button class="order-btn">Add to Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the selected tab content and mark button as active
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Add click event to order buttons
+        const orderButtons = document.querySelectorAll('.order-btn');
+        orderButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const itemName = this.parentElement.querySelector('.item-name').textContent;
+                alert(`Added ${itemName} to your order!`);
+            });
+        });
+    </script>
+</body>
+</html>
