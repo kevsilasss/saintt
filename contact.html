@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Saint's Diner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body, html {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://innovatureinc.com/wp-content/uploads/2022/08/2-6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: white;
+            color: #333;
+            transform: scale(1.1);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            padding: 2rem;
+            color: white;
+        }
+        
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .contact-method:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-right: 1.5rem;
+            color: #ff6b6b;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #ff6b6b;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background-color: #ff5252;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .contact-card {
+                padding: 1.5rem;
+            }
+            
+            .contact-method {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <header>
+        <h1>Saint's Diner</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="contact-container">
+            <div class="contact-card">
+                <h2>Get in Touch</h2>
+                <p>We'd love to hear from you! Reach out through any of these methods:</p>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Call or Text Us</h3>
+                        <p>Available daily from 8am to 10pm</p>
+                        <a href="tel:+26775052125" class="contact-link">Call +267 750 52125</a>
+                        <a href="sms:+26775052125" class="contact-link" style="margin-left: 10px;">Text Us</a>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email Us</h3>
+                        <p>We typically respond within 24 hours</p>
+                        <a href="mailto:saintsandco@gmail.com" class="contact-link">saintsandco@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Visit Us</h3>
+                        <p>Kgale Hill, Chief's Island</p>
+                        <p>Gaborone, Botswana</p>
+                        <a href="https://maps.google.com" target="_blank" class="contact-link">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Saint's Diner under Saint's and Co. All rights reserved</p>
+    </footer>
+</body>
+</html>
