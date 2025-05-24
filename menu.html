@@ -13,14 +13,46 @@
         }
 
         body {
-            background-color: #f5f5f5;
-            padding: 20px;
+            background-image: url('istockphoto-1162911786-612x612.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-blend-mode: overlay;
+    padding: 20px;
+    min-height: 100vh;
         }
+         .nav-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 12px 25px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
         .menu-container {
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
+            background:rgba(255, 255, 255, 0.9) ;
+        
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             overflow: hidden;
@@ -79,7 +111,8 @@
             border: 1px solid #eee;
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s
+            background: white; ;
         }
 
         .menu-item:hover {
@@ -133,6 +166,10 @@
     </style>
 </head>
 <body>
+<div class="nav-buttons">
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="contact.html" class="nav-btn">Contact</a>
+</div>
     <div class="menu-container">
         <div class="menu-header">
             <h1>Saint's Menu</h1>
