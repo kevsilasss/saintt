@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint's Bookings & Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="menu.html" class="nav-btn">Menu</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+
+    <div class="bookings-container">
+        <div class="page-header">
+            <h1>Bookings & Events</h1>
+            <p>Reserve your table or plan your special occasion with us</p>
+        </div>
+        
+        <div class="booking-options">
+            <!-- Table Reservations -->
+            <div class="booking-card">
+                <div class="booking-icon">🕒</div>
+                <h2>Table Reservations</h2>
+                <p>Book your table in advance for a seamless dining experience</p>
+                <form class="booking-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <input type="date" required>
+                    <input type="time" required>
+                    <input type="number" placeholder="Number of Guests" min="1" required>
+                    <button type="submit" class="submit-btn">Book Now</button>
+                </form>
+            </div>
+            
+            <!-- Private Events -->
+            <div class="booking-card">
+                <div class="booking-icon">🎉</div>
+                <h2>Private Events</h2>
+                <p>Host your special occasions in our private dining space</p>
+                <form class="booking-form">
+                    <input type="text" placeholder="Event Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <input type="date" required>
+                    <select required>
+                        <option value="">Event Type</option>
+                        <option>Birthday Party</option>
+                        <option>Corporate Event</option>
+                        <option>Family Gathering</option>
+                        <option>Other</option>
+                    </select>
+                    <textarea placeholder="Special Requests"></textarea>
+                    <button type="submit" class="submit-btn">Inquire Now</button>
+                </form>
+            </div>
+            
+            <!-- Catering Services -->
+            <div class="booking-card">
+                <div class="booking-icon">🍽️</div>
+                <h2>Catering Services</h2>
+                <p>Let us bring the Saint's experience to your location</p>
+                <form class="booking-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <input type="text" placeholder="Event Address" required>
+                    <input type="date" required>
+                    <select required>
+                        <option value="">Catering Package</option>
+                        <option>Basic Package</option>
+                        <option>Premium Package</option>
+                        <option>Custom Package</option>
+                    </select>
+                    <button type="submit" class="submit-btn">Get Quote</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple form submission feedback
+        document.querySelectorAll('.booking-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const cardTitle = this.closest('.booking-card').querySelector('h2').textContent;
+                alert(`Thank you for your ${cardTitle} inquiry! We'll contact you shortly.`);
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>
