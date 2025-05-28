@@ -63,6 +63,9 @@
             transition: all 0.3s ease;
             background-color: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         nav a:hover {
@@ -132,13 +135,13 @@
             z-index: 1;
         }
         
-        keyframes fadeIn {
+        @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
         
-        keyframes slideUp {
-         from { 
+        @keyframes slideUp {
+            from { 
                 opacity: 0;
                 transform: translateY(50px);
             }
@@ -146,6 +149,18 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* Icons styling */
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            filter: invert(1);
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover .nav-icon {
+            filter: invert(0);
         }
     </style>
 </head>
@@ -155,9 +170,26 @@
     <header>
         <h1>Saint&Co</h1>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="contact.html">Contact</a> 
+            <a href="index.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" class="nav-icon" alt="Home">
+                Home
+            </a>
+            <a href="menu.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/878/878052.png" class="nav-icon" alt="Menu">
+                Menu
+            </a>
+            <a href="bookings.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" class="nav-icon" alt="Bookings">
+                Bookings
+            </a>
+            <a href="contact.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/3059/3059518.png" class="nav-icon" alt="Contact">
+                Contact
+            </a>
+            <a href="feedback.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/2529/2529508.png" class="nav-icon" alt="Feedback">
+                Feedback
+            </a>
         </nav>
     </header>
     
