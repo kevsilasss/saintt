@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Saint's Diner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body, html {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            color: white;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.8rem 2rem;
+            border: 2px solid white;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav a:hover {
+            background-color: white;
+            color: #333;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        .feedback-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .feedback-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 30px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            border-radius: 15px;
+            resize: vertical;
+        }
+        
+        .rating {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .rating input {
+            display: none;
+        }
+        
+        .rating label {
+            font-size: 2rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .rating input:checked ~ label,
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #ff6b6b;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 30px;
+            border: none;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background-color: #ff5252;
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+        }
+        
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .quick-nav a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-nav a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .quick-nav a:hover .nav-icon {
+            background-color: white;
+            color: #333;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        footer {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            padding: 1.5rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            margin-top: 3rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                padding: 0 1rem;
+                gap: 1rem;
+            }
+            
+            nav a {
+                padding: 0.6rem 1.2rem;
+                font-size: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .quick-nav {
+                gap: 1rem;
+            }
+            
+            .nav-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <header>
+        <h1>Saint&Co</h1>
+        <nav>
+            <a href="index.html">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="menu.html">
+                <i class="fas fa-utensils"></i> Menu
+            </a>
+            <a href="bookings.html">
+                <i class="fas fa-calendar-alt"></i> Bookings
+            </a>
+            <a href="contact.html">
+                <i class="fas fa-envelope"></i> Contact
+            </a>
+            <a href="feedback.html" class="active">
+                <i class="fas fa-comment-alt"></i> Feedback
+            </a>
+        </nav>
+    </header>
+    
+    <div class="feedback-container">
+        <div class="page-header">
+            <h1>Your Feedback Matters</h1>
+            <p>We'd love to hear about your experience at Saint's Diner</p>
+        </div>
+        
+        <form class="feedback-form" id="feedbackForm">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="visit-date">Date of Visit</label>
+                <input type="date" id="visit-date" name="visit-date" required>
+            </div>
+            
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1">★</label>
+            </div>
+            
+            <div class="form-group">
+                <label for="feedback">Your Feedback</label>
+                <textarea id="feedback" name="feedback" required placeholder="Tell us about your experience..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+        
+        <div class="quick-nav">
+            <a href="index.html">
+                <div class="nav-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span>Home</span>
+            </a>
+            <a href="menu.html">
+                <div class="nav-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <span>Menu</span>
+            </a>
+            <a href="bookings.html">
+                <div class="nav-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <span>Bookings</span>
+            </a>
+            <a href="contact.html">
+                <div class="nav-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <span>Contact</span>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Saint's Diner under Saint's and Co. All rights reserved</p>
+    </footer>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your feedback! We appreciate your time and will use your comments to improve our service.');
+            this.reset();
+            
+            // Reset stars
+            document.querySelectorAll('.rating input').forEach(star => {
+                star.checked = false;
+            });
+        });
+    </script>
+</body>
+</html>
